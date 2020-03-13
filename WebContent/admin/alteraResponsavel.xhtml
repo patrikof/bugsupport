@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/Menu.xhtml"
+	xmlns:p="http://primefaces.prime.com.tr/ui" >
+	<ui:define name="content">
+
+<h:form id="f138">	
+<div class="col-sm-12">	
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title text-center" style="font-weight: bold;" >Controle do Responsável pela Solicitação</h2>
+  </div>
+  <div class="panel-body">
+  
+<h:messages id="message" style="color:blue" />		
+					<label>Código:</label>
+					<h:outputText value="#{solicitacaoBean.solicitacao.id}"/>
+					<br />
+			<label>Assunto:</label>#{solicitacaoBean.solicitacao.assunto}
+		            <br />
+					<label>Cliente:</label>#{solicitacaoBean.solicitacao.cliente.nomeFantasia}
+		    <br />
+			<label>Produto:</label>#{solicitacaoBean.solicitacao.produto.descricao}
+		    <br />
+			<label>Versão:</label>#{solicitacaoBean.solicitacao.versao.descricao}
+		    <br />
+			<label>Data do Cadastro:</label>
+			<h:outputText value="#{solicitacaoBean.solicitacao.dataCadastro}">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:outputText>
+			<label>Hora do Cadastro:</label>
+			<h:outputText value="#{solicitacaoBean.solicitacao.horaCadastro}">
+				<f:convertDateTime pattern="HH:mm:ss" type="time" dateStyle="short"
+					timeZone="GMT-3" />
+			</h:outputText>
+			<br />
+			<label>Tipo de Solicitação:</label> #{solicitacaoBean.solicitacao.tipoSolicitacao.descricao}
+		    <br />
+			<label>Prioridade:</label> #{solicitacaoBean.solicitacao.prioridade.descricao}
+		    <br />
+			<label>Status:</label> #{solicitacaoBean.solicitacao.status.descricao}
+		    <br />
+			<label>Atendente:</label> #{solicitacaoBean.solicitacao.atendente.nome}		    
+		    <br />
+			<label>Sistema Operacional:</label> #{solicitacaoBean.solicitacao.sistemaOperacional.descricao}
+		    <br />
+			<br />
+			<div><label>Problema:</label></div>
+			<div>
+			 <h:outputText style="width: 60em;word-wrap: break-word;white-space: pre-wrap;display:block;"
+				escape="false" value="#{solicitacaoBean.solicitacao.problemaFormatado}" /></div>
+			<div/>
+			<br />
+			<div><label>Solução:</label></div>
+			<div><h:outputText style="width: 60em;word-wrap: break-word;white-space: pre-wrap;display:block;"
+				escape="false"	value="#{solicitacaoBean.solicitacao.solucaoFormatado}" /></div>
+			<div ><label>Pessoa do Contato:</label>
+			#{solicitacaoBean.solicitacao.pessoaContato} <br />
+			<label>Data da Alteração:</label> <h:outputText
+				value="#{solicitacaoBean.solicitacao.dataAtualizacao}">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:outputText> <label>Hora da Alteração:</label> <h:outputText
+				value="#{solicitacaoBean.solicitacao.horaAtualizacao}">
+				<f:convertDateTime pattern="HH:mm:ss" type="time" dateStyle="short"
+					timeZone="GMT-3" />
+			</h:outputText></div>
+			        <br />        	
+		         	<label>Responsável:</label> 
+		         	<h:selectOneMenu  class="form-control"  style="width:245px" value="#{solicitacaoBean.solicitacao.responsavel.id}" 
+		         	required="true" requiredMessage="Informe um Responsável para Atender a Solicitação."
+				id="responsavel" label="Responsável" >
+				<f:selectItem itemValue="" itemLabel=" -- Atribua um Responsável -- " />
+				<f:selectItems value="#{usuarioBean.listagem}" var="usr"
+					itemValue="#{usr.id}" itemLabel="#{usr.nome}" />
+			</h:selectOneMenu>
+			<h:message for="responsavel" />
+			<br />  	
+			<br />  	
+			<h:inputHidden value="#{solicitacaoBean.solicitacao.atendente.id}" />
+</div>
+</div>
+</div>				
+&nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton value="Salvar" action="#{solicitacaoBean.salvar}"  class="btn btn-large btn-primary" />
+		    
+</h:form>
+</ui:define>
+</ui:composition>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+
+	<title><ui:insert name="title">BugSupport</ui:insert></title>	
+	<link href="#{request.contextPath}/resources/css/bootstrap-3.2.0-dist/css/bootstrap.css" rel="stylesheet" />
+</h:head>
+
+<h:body style="font-size: 10pt">
+	<h:form>
+	
+	<center>
+    <h:outputText value="#{param.error}" rendered="#{param.error!=null}" style="color:red;font-weight: bold;" />
+    </center>
+	
+		<center>
+		<h:graphicImage
+			value="/resources/img/acesso_negado.gif" /> <br />
+		<br />
+		<br />
+		<h2> Acesso Negado! </h2>
+		<br />
+		<br />
+		<br />
+		</center>
+		&nbsp;&nbsp;&nbsp;&nbsp; <h:commandLink style="font-size:30px" styleClass="glyphicon glyphicon-circle-arrow-left" action="/views/solicitacao/lista.jsf"  />
+	</h:form>
+</h:body>
+</html>

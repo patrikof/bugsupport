@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/Menu.xhtml">
+
+	<ui:define name="content">
+
+		<f:metadata>
+			<f:viewParam name="param1" value="#{clienteBean.cliente.id}" />
+			<f:event listener="#{clienteBean.carregar}" type="preRenderView"></f:event>
+		</f:metadata>
+		<h:form id="f112" >
+<div class="col-sm-12">		
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title text-center" style="font-weight: bold;" >Detalhes do Cliente #{clienteBean.cliente.nomeFantasia}</h2>
+  </div>
+  <div class="panel-body">
+		<!-- <h3>Detalhes do Cliente #{clienteBean.cliente.nomeFantasia}</h3> -->
+		
+		
+			<label>Endereço:</label>	#{clienteBean.cliente.endereco}
+			
+		    <br />
+			<label>Bairro:</label> #{clienteBean.cliente.bairro}
+		    <br />
+			<label>Cidade:</label> #{clienteBean.cliente.cidade}
+		    <br />
+			<label>UF:</label>	#{clienteBean.cliente.uf}
+		    <br />
+			<label>País:</label> #{clienteBean.cliente.pais}
+		    <br />
+			<label>Telefone 1:</label> #{clienteBean.cliente.telefone}
+		    <br />
+			<label>Telefone 2:</label> #{clienteBean.cliente.telefone2}
+		    <br />
+			<label>Telefone 3:</label> #{clienteBean.cliente.telefone3}
+		    <br />
+			<label>Celular:</label> #{clienteBean.cliente.celular}
+		    <br />
+			<label>Fax:</label> #{clienteBean.cliente.fax}
+	        <br />
+			<label>E-mail:</label> #{clienteBean.cliente.email}
+		    <br />
+			<label>Site:</label> #{clienteBean.cliente.site}
+		    <br />
+			<label>Data do Cadastro:</label>
+			<h:outputText value="#{clienteBean.cliente.dataCadastro}">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:outputText>
+			<br />
+			<br />
+		
+</div>
+</div>		
+</div>
+	&nbsp;&nbsp;&nbsp;&nbsp; <h:commandLink style="font-size:30px" styleClass="glyphicon glyphicon-circle-arrow-left" action="lista" immediate="true" />
+		</h:form>
+	</ui:define>
+</ui:composition>

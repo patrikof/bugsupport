@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/Menu.xhtml">
+
+	<ui:define name="content">
+
+<h:form id="f64" class="form-inline" role="form" >		
+<div class="col-sm-12">	
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title text-center" style="font-weight: bold;" >Alteração da Senha do Usuário</h2>
+  </div>
+  <div class="panel-body">  				
+			<h:messages id="message" style="color:blue" />			
+			<div class="">
+			<label class="control-label">Nova Senha:</label>
+			<h:inputSecret  class="form-control" value="#{usuarioBean.senhaDigitada}" required="true"
+				requiredMessage="Informe a nova senha." id="senha"
+				label="Nova Senha">
+			</h:inputSecret>
+			<h:message for="senha" />
+			</div>
+			<br />
+			<div class="">
+			<label class="control-label">Confirmação:</label>
+			<h:inputSecret  class="form-control" value="#{usuarioBean.senhaConfirmacao}"
+				required="true"
+				requiredMessage="A nova senha não foi confirmada. Digite tudo novamente."
+				id="senhaconf" label="Confirmação">
+			</h:inputSecret>
+			<h:message for="senhaconf" />
+			</div>
+			<h:inputHidden value="#{usuarioBean.usuario.id}" />		
+		</div>
+		</div>
+		</div>
+&nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton value="Salvar" action="#{usuarioBean.salvar}" class="btn btn-large btn-primary" />
+			&nbsp;
+			<h:commandButton value="Cancelar" action="/views/principal.jsf"	immediate="true" class="btn btn-large btn-primary" />		
+</h:form>		
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,12 @@
+@media print
+{    
+    .no-print, .no-print *, .datetimepicker
+    {
+        display: none !important;
+    }
+    
+}
+
+. paginacaoDinamica{
+	
+}

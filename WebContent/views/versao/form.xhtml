@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/Menu.xhtml">
+
+<ui:define name="content">
+<f:metadata>
+			<f:viewParam name="id" value="#{versaoBean.versao.id}" />
+			<f:event listener="#{versaoBean.carregar}" type="preRenderView"></f:event>
+		</f:metadata>
+	
+<h:form id="fmCadVersao" class="form-horizontal" role="form">
+<h:messages id="message" style="color:blue"/>		
+<div class="col-sm-12">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title text-center" style="font-weight: bold;" >Cadastro de Versão de Produto</h2>
+  </div>
+  <div class="panel-body">
+			<div class="form-group">			
+			<label class="col-sm-1 control-label">Produto:</label>			
+			<h:selectOneMenu style="width:245px" styleClass="form-control" value="#{versaoBean.versao.produto.id}"
+				required="true" requiredMessage="Informe/Cadastre um Produto."
+				id="produto" label="Produto">
+				<f:selectItem itemValue="" itemLabel=" -- Selecione um Produto -- " />
+				<f:selectItems value="#{produtoBean.listagem}" var="prod"
+					itemValue="#{prod.id}" itemLabel="#{prod.descricao}" />
+			</h:selectOneMenu>
+			<h:message for="produto" />
+			</div>
+			<br />
+			<div class="form-group">
+			<label class="col-sm-1 control-label">Versão:</label>
+			<h:inputText style="width:245px" class="form-control" value="#{versaoBean.versao.descricao}" required="true"
+				requiredMessage="Informe uma Versão." id="versao"
+				label="Versão">
+			</h:inputText>
+			<h:message for="versao" />
+			</div>
+			<br />
+			<div class="form-group">		
+			<label  for="fmCadVersao:ativa"  class="col-sm-1 control-label">Ativa:</label>
+			<!-- <h:selectBooleanCheckbox style="width:20px" styleClass="form-control input-sm" value="#{versaoBean.versao.ativa}"	id="ativa" label="Ativa" /> -->
+			<!-- <input type="checkbox" value="#{versaoBean.versao.ativa}"	id="ativa" /> -->
+			<h:selectBooleanCheckbox value="#{versaoBean.versao.ativa}"	id="ativa" label="Ativa" />
+			
+			</div>			
+			<h:inputHidden value="#{versaoBean.versao.id}" />			
+		</div>
+		</div>
+		</div>
+&nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton value="Salvar" action="#{versaoBean.salvar}" class="btn btn-large btn-primary" />
+			&nbsp;
+			<h:commandButton value="Cancelar" action="/views/principal" immediate="true" class="btn btn-large btn-primary" />
+			</h:form>		
+</ui:define>
+</ui:composition>

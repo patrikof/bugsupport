@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/Menu.xhtml">
+
+	<ui:define name="content">
+	<h:form>
+	<h:messages id="message" style="color:blue" />
+
+
+	
+<div class="col-sm-12">	
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title text-center" style="font-weight: bold;" >Relação de Clientes</h2>
+  </div>	
+			
+			<div class="table-responsive">			
+			<div class="">
+			<h:dataTable styleClass="table display" var="cli" 
+			value="#{clienteBean.listagem}"  id="lista_cliente" >
+				
+				
+				<h:column id="id" >
+					<f:facet name="header">			
+						<h:outputText value= "Código"/>
+					</f:facet>
+					<h:outputText value="#{cli.id}" />
+				</h:column>  				
+				<h:column id="nomefantasia" >
+					<f:facet name="header">			
+						<h:outputText value= "Nome de Fantasia"/>
+					</f:facet>
+					<h:outputText value="#{cli.nomeFantasia}" />
+				</h:column>
+				<h:column id="razaosocial" >
+					<f:facet name="header">			
+						<h:outputText value= "Razão Social"/>
+					</f:facet>
+					<h:outputText value="#{cli.razaoSocial}" />
+				</h:column>
+				<h:column id="cnpj" >
+				    <f:facet name="header">			
+						<h:outputText value= "CNPJ"/>
+					</f:facet>
+					<h:outputText value="#{cli.cnpj}" />
+				</h:column>
+				<h:column id="grupocliente" >
+					<f:facet name="header">			
+						<h:outputText value="Grupo de Cliente" />
+					</f:facet>					
+					<h:outputText value="#{cli.grupoCliente.descricao}" />
+				</h:column>				
+				<h:column  id="gerenciarprod" >
+					<f:facet name="header">			
+						<h:outputText value="Gerenciar Produtos" />
+					</f:facet>
+					<h:commandLink value="Visualizar Produtos" action="#{clienteBean.adicionarProduto}" >
+					  <f:setPropertyActionListener value="#{cli}" target="#{clienteProdutoBean.cliente}" />
+					</h:commandLink>
+				</h:column>
+				<h:column id="detalhes" >
+    				<f:facet name="header">
+						<h:outputText styleClass="glyphicon glyphicon-list-alt" />
+					</f:facet>
+					<h:link styleClass="glyphicon glyphicon-list-alt" outcome="detalhes" >
+						<f:param name="param1" value="#{cli.id}" />
+					</h:link>
+				</h:column>
+				<h:column id="alterar" >
+				    <f:facet name="header">
+						<h:outputText styleClass="glyphicon glyphicon-edit" />
+					</f:facet>
+					<h:commandLink styleClass="glyphicon glyphicon-edit" action="#{clienteBean.alterar(cli.id)}" >
+						<!-- <f:setPropertyActionListener value="#{cli}" target="#{clienteBean.cliente}" /> -->
+					</h:commandLink>
+				</h:column>
+				<h:column id="remover" >
+				    <f:facet name="header">
+						<h:outputText styleClass="glyphicon glyphicon-remove" />
+					</f:facet>							
+					<h:commandLink styleClass="glyphicon glyphicon-remove"  action="#{clienteBean.remover(cli.id)}" onclick="if (!confirm('Deseja realmente excluir o cliente \'#{cli.nomeFantasia}\'?')){ return false};" >
+						<!-- <f:setPropertyActionListener value="#{cli}" target="#{clienteBean.cliente}" />
+						<f:ajax execute="@this" render="@form"></f:ajax>  -->
+					</h:commandLink>
+					
+				</h:column>
+								
+			</h:dataTable>
+			</div>					
+	</div>	
+	</div>
+	</div>
+	&nbsp;&nbsp;&nbsp;&nbsp;<h:commandButton value="Gerar PDF" action="#{clienteBean.gerarPdf}" class="btn btn-large btn-primary" />	
+	</h:form>
+	
+	</ui:define>
+</ui:composition>

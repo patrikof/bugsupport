@@ -1,0 +1,158 @@
+/*body {
+	background-image:url("/BugSupport/resources/img/beveled-bugx300dpi.jpg");
+	
+}
+
+depois ver o menú mudar a cor:"background-color:#0044cc;color:#ffffff"
+
+
+*/
+
+
+/* 
+DESCOMENTAR
+body {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background-color: #f5f5f5;
+}
+ 
+#VersaoBugSupport {
+	text-align: center;
+	background-color: gray;
+	color: white;
+	height: 50px;
+}
+  
+table {
+	width: 100%;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+}
+
+th {
+	background-color: gray;
+	color: white;
+}
+
+td {
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+}
+
+
+
+label.top {
+	vertical-align: top;
+}
+
+label {
+		
+	font-size: 12px;
+	font-style: oblique;
+	font-weight: bold;
+	margin-top: 1%;
+	display: inline-block;
+	width: 75px;
+	text-align: right;
+}
+ 
+
+#f126>label {
+	font-size: 12px;
+	font-style: oblique;
+	font-weight: bold;
+	margin-top: 1%;
+	display: inline-block;
+	width: 126px;
+	text-align: right;
+}
+
+#f53>label {
+	font-size: 12px;
+	font-style: oblique;
+	font-weight: bold;
+	margin-top: 1%;
+	display: inline-block;
+	width: 60px;
+	text-align: right;
+}
+
+#f112>label {
+	font-size: 12px;
+	font-style: oblique;
+	font-weight: bold;
+	margin-top: 1%;
+	display: inline-block;
+	width: 112px;
+	text-align: right;
+}
+
+
+
+
+#f138>label {
+	font-size: 12px;
+	font-style: oblique;
+	font-weight: bold;
+	margin-top: 1%;
+	display: inline-block;
+	width: 132px;
+	text-align: right;
+}
+
+label#acessoAdmin {
+	margin-right: 1%;
+}
+*/
+
+/* 
+#f64>label {
+	font-size: 12px;
+	font-style: oblique;
+	font-weight: bold;
+	margin-top: 1%;
+	display: inline-block;
+	width: 64px;
+	text-align: right;
+}
+ */
+
+/* #f100>label {
+	font-size: 12px;
+	font-style: oblique;
+	font-weight: bold;
+	margin-top: 1%;
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+} */
+
+
+
+#f132>div>div>label {
+	font-size: 12px;
+	font-style: oblique;
+	font-weight: bold;
+	margin-top: 1%;
+	display: inline-block;
+	width: 132px;
+	text-align: right;
+}
+
+div#linkVoltar {
+	display: block;
+	margin-top: 2%;
+}
+
+.flutuar {
+	float: left;
+}
+
+.clear {
+	clear: both;
+}
+
+

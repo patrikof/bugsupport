@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/Menu.xhtml">
+
+	<ui:define name="content">	
+	
+<h:head>
+
+<script type="text/javascript" src="#{request.contextPath}/resources/javascript/listaVersao.js" charset="UTF-8"></script>
+
+<script type="text/javascript">
+ 
+ var tr;
+
+ function removerVersao(id) 
+ {
+	 tr=$('#rm_'+id).closest('tr'); 	 
+	 
+   $.get(contextPath+"/VersaoGsonServlet?id=" + id, function(r){
+	   if(!r.erro){
+		   tr.remove();		   
+	   }
+	   alert(r.mensagem);
+   },"json");
+  
+ }
+</script>                                       
+                             
+</h:head>		
+<h:form>
+<h:messages id="message" style="color:blue"/>			
+<div class="col-sm-12">	
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title text-center" style="font-weight: bold;" >Relação de Versões de Produto</h2>
+  </div>			
+	<div class="table-responsive">				
+	<div class="">
+
+ 	<table id="listaVersao" class="display paginacaoDinamica">
+		<thead>
+		   <tr>
+		     <th>Produto</th>		                    
+		     <th>Versão</th>            
+		     <th>Ativa</th>
+		     <th><h:outputText styleClass="glyphicon glyphicon-edit  no-print" /></th>
+		     <th><h:outputText styleClass="glyphicon glyphicon-remove  no-print" /></th>
+		     
+		   </tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	</div>	
+	</div>
+	</div>
+	</div>
+</h:form>	
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<import resource="securityContext.xml" />
+
+	<context:component-scan base-package="br.bug" />   
+     
+
+	<bean  id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="org.postgresql.Driver" />	     
+		<property name="url" value="jdbc:postgresql://localhost:5432/suporte" /> 
+		<property name="username" value="postgres" /> <property name="password" value="postgres"/>
+			
+	</bean>
+	
+	
+	
+	
+	<!-- Heroku Amazon Oficial desde 03/10/2017 -->
+	
+  <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+		> <property name="driverClassName" value="org.postgresql.Driver" /> <property 
+		name="url" value="jdbc:postgresql://ec2-23-21-92-251.compute-1.amazonaws.com:5432/d3pmo7anqpeh7b?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory" /> <property 
+		name="username" value="umpbankurdvrfh" /> <property name="password" value="36757559b6e109a335e54a0c7b39c3b382f4b4cf25fe88a2c01349552130d82d" 
+		/> </bean>   -->
+		
+<!-- postgres://umpbankurdvrfh:36757559b6e109a335e54a0c7b39c3b382f4b4cf25fe88a2c01349552130d82d@ec2-23-21-92-251.compute-1.amazonaws.com:5432/d3pmo7anqpeh7b -->		
+		
+			
+			
+
+<!-- 	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url"
+			value="jdbc:postgresql://530e0e0c5973caceca000072-bugsupport.rhcloud.com:44546/teste" />
+		<property name="username" value="adminufel5dx" />
+		<property name="password" value="g37U1Dg3g3uG" />
+	</bean> -->
+
+
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+		> <property name="driverClassName" value="org.postgresql.Driver" /> <property 
+		name="url" value="jdbc:postgresql://{$OPENSHIFT_POSTGRESQL_DB_HOST}:{$OPENSHIFT_POSTGRESQL_DB_PORT}/{$OPENSHIFT_APP_NAME}" 
+		/> <property name="username" value="{$OPENSHIFT_POSTGRESQL_DB_USERNAME}" 
+		/> <property name="password" value="{$OPENSHIFT_POSTGRESQL_DB_PASSWORD}" 
+		/> </bean> -->
+
+
+	<!-- 
+	ANTIGO TOMCAT OFICIAL
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+		> <property name="driverClassName" value="org.postgresql.Driver" /> <property 
+		name="url" value="jdbc:postgresql://127.13.118.2:5432/suporte" /> <property 
+		name="username" value="admingv2ewn2" /> <property name="password" value="ccsJ9iY5bm24" 
+		/> </bean> -->
+		
+		
+<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+		> <property name="driverClassName" value="org.postgresql.Driver" /> <property 
+		name="url" value="jdbc:postgresql://5363a5e45973cac4c500037c-techvirtual.rhcloud.com:36096/suporte" /> <property 
+		name="username" value="adminwnicuvj" /> <property name="password" value="xaaT9bEYL-BN" 
+		/> </bean>  -->		
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="br.bug.dominio" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>
