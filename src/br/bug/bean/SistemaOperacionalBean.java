@@ -1,6 +1,5 @@
 package br.bug.bean;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,9 @@ import br.bug.negocio.GerenciadorSistemaOperacional;
 
 @Component
 @Scope("request")
-public class SistemaOperacionalBean  implements Serializable {
+public class SistemaOperacionalBean {
 
-	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	private GerenciadorSistemaOperacional gerenciador;
 	private SistemaOperacional sistemaOperacional;
@@ -35,7 +34,7 @@ public class SistemaOperacionalBean  implements Serializable {
 			limpaDados();
 			return "/views/sistemaoperacional/form";
 		} catch (Exception e) {
-			FacesUtil.addError("Ocorreu um erro ao tentar salvar o cadastro. Mensagem Técnica: "+e.getMessage());
+			FacesUtil.addError("Ocorreu um erro ao tentar salvar o cadastro. Mensagem Tï¿½cnica: "+e.getMessage());
 			return null;
 		}
 	}
@@ -47,7 +46,7 @@ public class SistemaOperacionalBean  implements Serializable {
 			FacesUtil.addInfo("Dado removido com sucesso!");
 			return null;
 		} catch (Exception e) {
-			FacesUtil.addError("Ocorreu um erro ao tentar remover o dado escolhido, possivelmente por estar sendo utilizado em outro cadastro. Mensagem Técnica: "+e.getMessage());
+			FacesUtil.addError("Ocorreu um erro ao tentar remover o dado escolhido, possivelmente por estar sendo utilizado em outro cadastro. Mensagem Tï¿½cnica: "+e.getMessage());
 			return null;
 		}
 	}

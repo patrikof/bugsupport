@@ -1,6 +1,5 @@
 package br.bug.bean;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.context.annotation.Scope;
@@ -12,8 +11,8 @@ import br.bug.jsf.FacesUtil;
 
 @Component
 @Scope("session")
-public class BuscaSolicitacaoBean implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class BuscaSolicitacaoBean{
+	
 //	@Autowired
 //	private GerenciadorSolicitacao gerenciador;
 	private int id;
@@ -78,7 +77,7 @@ public class BuscaSolicitacaoBean implements Serializable {
 		{
 			lazySolicitacoesDataModel = new LazyDataModel<Solicitacao>() 
 			{
-				private static final long serialVersionUID = 1L;
+				
 
 				@SuppressWarnings("unused")
 				public Solicitacao getRowData(int rowKey) {
@@ -177,7 +176,7 @@ public class BuscaSolicitacaoBean implements Serializable {
 
 		} catch (Exception e) {
 			FacesUtil
-					.addError("Ocorreu um erro ao tentar realizar a pesquisa. Mensagem Técnica: "
+					.addError("Ocorreu um erro ao tentar realizar a pesquisa. Mensagem Tï¿½cnica: "
 							+ e.getMessage());
 			return null;
 		}

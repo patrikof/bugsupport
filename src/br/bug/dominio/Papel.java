@@ -23,7 +23,7 @@ import com.google.gson.annotations.Expose;
 @Entity
 public class Papel implements Serializable, GrantedAuthority{
 	
-	private static final long serialVersionUID = 1L;
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_PAPEL")

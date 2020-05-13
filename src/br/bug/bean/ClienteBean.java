@@ -1,7 +1,6 @@
 package br.bug.bean;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,9 +16,9 @@ import net.sf.jasperreports.engine.JRException;
 
 @Component
 @Scope("request")
-public class ClienteBean implements Serializable {
+public class ClienteBean{
 
-	private static final long serialVersionUID = 1L;
+	
 	
 	@Autowired
 	private GerenciadorCliente gerenciador;
@@ -55,7 +54,7 @@ public class ClienteBean implements Serializable {
 			return "/views/cliente/form";
 		} catch (Exception e) {
 			FacesUtil
-					.addError("Ocorreu um erro ao tentar salvar o cadastro. Mensagem Técnica: "
+					.addError("Ocorreu um erro ao tentar salvar o cadastro. Mensagem Tï¿½cnica: "
 							+ e.getMessage());
 			return null;
 		}
@@ -69,7 +68,7 @@ public class ClienteBean implements Serializable {
 			return null;
 		} catch (Exception e) {
 			FacesUtil
-					.addError("Ocorreu um erro ao tentar remover o dado escolhido, possivelmente por estar sendo utilizado em outro cadastro. Mensagem Técnica: "
+					.addError("Ocorreu um erro ao tentar remover o dado escolhido, possivelmente por estar sendo utilizado em outro cadastro. Mensagem Tï¿½cnica: "
 							+ e.getMessage());
 			return null;
 		}

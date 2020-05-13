@@ -1,6 +1,5 @@
 package br.bug.bean;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,9 @@ import br.bug.negocio.GerenciadorPrioridade;
 
 @Component
 @Scope("request")
-public class PrioridadeBean  implements Serializable {
+public class PrioridadeBean {
 
-	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	private GerenciadorPrioridade gerenciador;
 	private Prioridade prioridade;
@@ -35,7 +34,7 @@ public class PrioridadeBean  implements Serializable {
 			limpaDados();
 			return "/views/prioridade/form";
 		} catch (Exception e) {
-			FacesUtil.addError("Ocorreu um erro ao tentar salvar o cadastro. Mensagem Técnica: "+e.getMessage());
+			FacesUtil.addError("Ocorreu um erro ao tentar salvar o cadastro. Mensagem Tï¿½cnica: "+e.getMessage());
 			return null;
 		}
 	}
@@ -47,7 +46,7 @@ public class PrioridadeBean  implements Serializable {
 			FacesUtil.addInfo("Dado removido com sucesso!");
 			return null;
 		} catch (Exception e) {
-			FacesUtil.addError("Ocorreu um erro ao tentar remover o dado escolhido, possivelmente por estar sendo utilizado em outro cadastro. Mensagem Técnica: "+e.getMessage());
+			FacesUtil.addError("Ocorreu um erro ao tentar remover o dado escolhido, possivelmente por estar sendo utilizado em outro cadastro. Mensagem Tï¿½cnica: "+e.getMessage());
 			return null;
 		}
 	}

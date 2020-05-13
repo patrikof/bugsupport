@@ -26,7 +26,7 @@ import com.google.gson.annotations.Expose;
 
 @Entity
 public class Usuario implements Serializable, UserDetails {
-	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_USUARIO")
 	@SequenceGenerator(name = "SEQ_USUARIO", sequenceName = "id_usuario_seq", allocationSize = 1)

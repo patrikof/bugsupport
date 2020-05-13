@@ -1,6 +1,5 @@
 package br.bug.bean;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,9 +24,9 @@ import br.bug.negocio.GerenciadorSolicitacao;
 
 @Component
 @Scope("session")
-public class SolicitacaoBean implements Serializable {
+public class SolicitacaoBean{
 
-	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	private GerenciadorSolicitacao gerenciador;
 	@Autowired
@@ -145,7 +144,7 @@ public class SolicitacaoBean implements Serializable {
 
 		} catch (Exception e) {
 			FacesUtil
-					.addError("Ocorreu um erro ao tentar salvar o cadastro. Mensagem Técnica: "
+					.addError("Ocorreu um erro ao tentar salvar o cadastro. Mensagem Tï¿½cnica: "
 							+ e.getMessage());
 			return null;
 		}
@@ -166,12 +165,12 @@ public class SolicitacaoBean implements Serializable {
 	 * ((BuscaSolicitacaoBean) ContextLoader
 	 * .getCurrentWebApplicationContext().getBean(
 	 * "buscaSolicitacaoBean")).pesquisar(); } else { FacesUtil .addWarning(
-	 * "A Solicitação só pode ser removida pelo Atendente que a cadastrou!");
+	 * "A Solicitaï¿½ï¿½o sï¿½ pode ser removida pelo Atendente que a cadastrou!");
 	 * return null; }
 	 * 
 	 * 
 	 * } catch (Exception e) { FacesUtil .addError(
-	 * "Ocorreu um erro ao tentar remover o dado escolhido, possivelmente por estar sendo utilizado em outro cadastro. Mensagem Técnica: "
+	 * "Ocorreu um erro ao tentar remover o dado escolhido, possivelmente por estar sendo utilizado em outro cadastro. Mensagem Tï¿½cnica: "
 	 * + e.getMessage()); return null; } }
 	 */
 
@@ -205,7 +204,7 @@ public class SolicitacaoBean implements Serializable {
 			return FacesUtil.redirect("/views/solicitacao/form");
 		} else {
 			FacesUtil
-					.addWarning("A Solicitação só pode ser alterada pelo Atendente que a cadastrou ou pelo Responsável dela!");
+					.addWarning("A Solicitaï¿½ï¿½o sï¿½ pode ser alterada pelo Atendente que a cadastrou ou pelo Responsï¿½vel dela!");
 			return null;
 		}
 	}

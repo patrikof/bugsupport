@@ -23,8 +23,8 @@ import br.bug.jsf.FacesUtil;
 import br.bug.relatorio.RelatorioJasper;
 import net.sf.jasperreports.engine.JRException;
 
-@Component
 @Transactional
+@Component
 public class GerenciadorSolicitacao {
 
 	@Autowired
@@ -43,10 +43,10 @@ public class GerenciadorSolicitacao {
 				a.setResponsavel(null);
 			} else {
 				/*
-				  Usuario resp = new Usuario(); resp =
-				  dao.buscar(a.getResponsavel().getId(), Usuario.class);
-				  a.setResponsavel(resp);*/
-				 
+				 * Usuario resp = new Usuario(); resp = dao.buscar(a.getResponsavel().getId(),
+				 * Usuario.class); a.setResponsavel(resp);
+				 */
+
 			}
 		}
 
@@ -54,12 +54,10 @@ public class GerenciadorSolicitacao {
 			a.setDataCadastro(new Date());
 			a.setHoraCadastro(new Date());
 
-			Usuario usuario = ((CustomUserDetailsService) ContextLoader
-					.getCurrentWebApplicationContext().getBean(
-							"customUserDetailsService")).getUsuarioLogado();
+			Usuario usuario = ((CustomUserDetailsService) ContextLoader.getCurrentWebApplicationContext()
+					.getBean("customUserDetailsService")).getUsuarioLogado();
 			a.setAtendente(usuario);
-			
-			
+
 			boolean aplicaRegraProgramador = false;
 
 			if (a.getResponsavel() == null) {
@@ -70,8 +68,7 @@ public class GerenciadorSolicitacao {
 				aplicaRegraProgramador = (a.getResponsavel().getId() == 0);
 			}
 
-			if (aplicaRegraProgramador) 
-			{
+			if (aplicaRegraProgramador) {
 				Iterator<Papel> it = usuario.getPapeis().iterator();
 				boolean eProgramador = false;
 
@@ -117,8 +114,7 @@ public class GerenciadorSolicitacao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Versao> buscarVersoesProduto(int idProduto,
-			boolean somenteAtivas) {
+	public List<Versao> buscarVersoesProduto(int idProduto, boolean somenteAtivas) {
 
 		String QueryAux = "select v from Versao v where v.produto.id =?";
 
@@ -126,7 +122,7 @@ public class GerenciadorSolicitacao {
 
 			QueryAux = QueryAux + " and v.ativa=true";
 		}
-		
+
 		QueryAux = QueryAux + " order by v.descricao, v.id";
 
 		List<Versao> lista = dao.getHt().find(QueryAux, idProduto);
@@ -135,13 +131,10 @@ public class GerenciadorSolicitacao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Solicitacao> pesquisar(Date dataCadastroInicial,
-			Date dataCadastroFinal, Date dataAtualizacaoInicial,
-			Date dataAtualizacaoFinal, String pessoaContato, String assunto,
-			int id, int cliente, int prioridade, int status,
-			int tipoSolicitacao, int sistemaOperacional, int produto,
-			int versao, int atendente, int responsavel, int iSortColumnIndex,
-			String sSortDirection, int iDisplayStart, int iDisplayLength,
+	public List<Solicitacao> pesquisar(Date dataCadastroInicial, Date dataCadastroFinal, Date dataAtualizacaoInicial,
+			Date dataAtualizacaoFinal, String pessoaContato, String assunto, int id, int cliente, int prioridade,
+			int status, int tipoSolicitacao, int sistemaOperacional, int produto, int versao, int atendente,
+			int responsavel, int iSortColumnIndex, String sSortDirection, int iDisplayStart, int iDisplayLength,
 			Integer[] iTotalDisplayRecords) {
 
 		String hqlFrom = " from Solicitacao s left join s.produto pro left join s.cliente cli"
@@ -181,28 +174,24 @@ public class GerenciadorSolicitacao {
 			if (dataCadastroInicial != null) {
 				BuscouDataCadastroInicial = true;
 				// c.add(Restrictions.ge("dataCadastro", dataCadastroInicial));
-				hqlWhere = hqlWhere
-						+ " and (s.dataCadastro >= :dataCadastroInicial)";
+				hqlWhere = hqlWhere + " and (s.dataCadastro >= :dataCadastroInicial)";
 			}
 			if (dataCadastroFinal != null) {
 				BuscouDataCadastroFinal = true;
 				// c.add(Restrictions.le("dataCadastro", dataCadastroFinal));
-				hqlWhere = hqlWhere
-						+ " and (s.dataCadastro <= :dataCadastroFinal)";
+				hqlWhere = hqlWhere + " and (s.dataCadastro <= :dataCadastroFinal)";
 			}
 			if (dataAtualizacaoInicial != null) {
 				BuscouDataAtualizacaoInicial = true;
 				// c.add(Restrictions.ge("dataAtualizacao",
 				// dataAtualizacaoInicial));
-				hqlWhere = hqlWhere
-						+ " and (s.dataAtualizacao >= :dataAtualizacaoInicial)";
+				hqlWhere = hqlWhere + " and (s.dataAtualizacao >= :dataAtualizacaoInicial)";
 			}
 			if (dataAtualizacaoFinal != null) {
 				BuscouDataAtualizacaoFinal = true;
 				// c.add(Restrictions.le("dataAtualizacao",
 				// dataAtualizacaoFinal));
-				hqlWhere = hqlWhere
-						+ " and (s.dataAtualizacao <= :dataAtualizacaoFinal)";
+				hqlWhere = hqlWhere + " and (s.dataAtualizacao <= :dataAtualizacaoFinal)";
 			}
 
 			if (pessoaContato != null) {
@@ -210,8 +199,7 @@ public class GerenciadorSolicitacao {
 					// c.add(Restrictions.like("pessoaContato","%" +
 					// pessoaContato + "%").ignoreCase());
 					BuscouPessoaContato = true;
-					hqlWhere = hqlWhere
-							+ " and (lower(s.pessoaContato) like lower(:pessoaContato))";
+					hqlWhere = hqlWhere + " and (lower(s.pessoaContato) like lower(:pessoaContato))";
 
 				}
 			}
@@ -220,8 +208,7 @@ public class GerenciadorSolicitacao {
 					BuscouAssunto = true;
 					// c.add(Restrictions.like("assunto", "%" + assunto +
 					// "%").ignoreCase());
-					hqlWhere = hqlWhere
-							+ " and (lower(s.assunto) like lower(:assunto))";
+					hqlWhere = hqlWhere + " and (lower(s.assunto) like lower(:assunto))";
 				}
 			}
 			if (cliente > 0) {
@@ -295,7 +282,7 @@ public class GerenciadorSolicitacao {
 			break;
 		case 2:
 			hql = hql + " order by tipsol.descricao " + sSortDirection;
-			break;			
+			break;
 		case 3:
 			hql = hql + " order by pro.descricao " + sSortDirection;
 			break;
@@ -307,7 +294,7 @@ public class GerenciadorSolicitacao {
 			break;
 		case 6:
 			hql = hql + " order by pessoaContato " + sSortDirection;
-			break;			
+			break;
 		case 7:
 			hql = hql + " order by s.dataCadastro " + sSortDirection;
 			break;
@@ -332,8 +319,7 @@ public class GerenciadorSolicitacao {
 		}
 		if (BuscouDataAtualizacaoInicial) {
 			query.setDate("dataAtualizacaoInicial", dataAtualizacaoInicial);
-			queryCount
-					.setDate("dataAtualizacaoInicial", dataAtualizacaoInicial);
+			queryCount.setDate("dataAtualizacaoInicial", dataAtualizacaoInicial);
 		}
 		if (BuscouDataAtualizacaoFinal) {
 			query.setDate("dataAtualizacaoFinal", dataAtualizacaoFinal);
@@ -397,11 +383,9 @@ public class GerenciadorSolicitacao {
 		return lista;
 	}
 
-	public void gerarPdf(List<Solicitacao> solicitacoes) throws JRException,
-			IOException {
+	public void gerarPdf(List<Solicitacao> solicitacoes) throws JRException, IOException {
 		if (solicitacoes != null)
-			RelatorioJasper.imprimir(solicitacoes, "RelatorioSolicitacoes",
-					null);
+			RelatorioJasper.imprimir(solicitacoes, "RelatorioSolicitacoes", null);
 		else
 			FacesUtil.addInfo("N�o h� resultado para gerar um PDF.");
 

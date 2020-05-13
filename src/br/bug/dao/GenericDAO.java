@@ -1,6 +1,5 @@
 package br.bug.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -11,9 +10,9 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GenericDAO implements Serializable {
+public class GenericDAO{
 	
-	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	private HibernateTemplate ht;
 

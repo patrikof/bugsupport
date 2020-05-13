@@ -10,11 +10,11 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.bug.jsf.FacesUtil;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import br.bug.jsf.FacesUtil;
 
 public class RelatorioJasper {
 
@@ -27,12 +27,12 @@ public class RelatorioJasper {
 	 * 
 	 * if (relatorio != null) { JasperViewer.viewReport(relatorio, false);
 	 * 
-	 * FacesUtil .addInfo("Visualização do Relatório Executada com Sucesso!"); }
+	 * FacesUtil .addInfo("Visualizaï¿½ï¿½o do Relatï¿½rio Executada com Sucesso!"); }
 	 * else { FacesUtil
-	 * .addError("Erro 1 - Falha na Visualização do Relatório!"); }
+	 * .addError("Erro 1 - Falha na Visualizaï¿½ï¿½o do Relatï¿½rio!"); }
 	 * 
 	 * } catch (Exception e) { FacesUtil .addError(
-	 * "Erro 2 - Ocorreu um erro ao tentar Visualizar o Relatório. Mensagem Técnica: "
+	 * "Erro 2 - Ocorreu um erro ao tentar Visualizar o Relatï¿½rio. Mensagem Tï¿½cnica: "
 	 * + e.getMessage() + " StackTrace:" + e.getStackTrace().toString() ); } }
 	 * 
 	 * public static <T> OutputStream gerarPdf(InputStream inputStream,
@@ -61,13 +61,13 @@ public class RelatorioJasper {
 	 * exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
 	 * //exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, out);
 	 * 
-	 * //gera o relatório exporter.exportReport();
+	 * //gera o relatï¿½rio exporter.exportReport();
 	 * 
 	 * //return out;
 	 * 
 	 * 
 	 * } catch (Exception e) { FacesUtil .addError(
-	 * "Erro 2 - Ocorreu um erro ao tentar gerar o PDF da pesquisa. Mensagem Técnica: "
+	 * "Erro 2 - Ocorreu um erro ao tentar gerar o PDF da pesquisa. Mensagem Tï¿½cnica: "
 	 * + e.getMessage()+ " StackTrace:" + e.getStackTrace().toString()); }
 	 * //return null; }
 	 * 
@@ -113,7 +113,7 @@ public class RelatorioJasper {
 
 			Boolean AchouArquivo = false;
 
-			System.out.println("Método 1:");
+			System.out.println("Mï¿½todo 1:");
 			System.out.println("Arquivo passado:" + reportUrl);
 			System.out.println("Url Relativa montada:" + caminhoRelativo);
 
@@ -130,7 +130,7 @@ public class RelatorioJasper {
 			}
 
 			if (!AchouArquivo) {
-				System.out.println("Método 2:");
+				System.out.println("Mï¿½todo 2:");
 				System.out.println("Arquivo passado:" + reportUrl);
 				System.out.println("Url Relativa montada:" + caminhoRelativo);
 
@@ -148,8 +148,8 @@ public class RelatorioJasper {
 			}
 			/*
 			 * if (!AchouArquivo) {
-			 * System.out.println("Url Real Encontrada mais não existe...");
-			 * System.out.println("Método 3:");
+			 * System.out.println("Url Real Encontrada mais nï¿½o existe...");
+			 * System.out.println("Mï¿½todo 3:");
 			 * System.out.println("Arquivo passado:" + reportUrl);
 			 * 
 			 * caminhoRelativo = separator+ reportUrl + ".jasper";
@@ -165,8 +165,8 @@ public class RelatorioJasper {
 			 * System.out.println("Url Real Encontrada foi NULL"); } }
 			 */
 			if (!AchouArquivo) {
-				System.out.println("Url Real Encontrada mais não existe...");
-				System.out.println("Método 3(era o 4):");
+				System.out.println("Url Real Encontrada mais nï¿½o existe...");
+				System.out.println("Mï¿½todo 3(era o 4):");
 				System.out.println("Arquivo passado:" + reportUrl);
 				caminhoRelativo = "resources" + separator + "relatorios"
 						+ separator + reportUrl + ".jasper";
@@ -184,8 +184,8 @@ public class RelatorioJasper {
 			}
 			if (!AchouArquivo) {
 
-				System.out.println("Url Real Encontrada mais não existe...");
-				System.out.println("Método 5:");
+				System.out.println("Url Real Encontrada mais nï¿½o existe...");
+				System.out.println("Mï¿½todo 5:");
 				System.out.println("Arquivo passado:" + reportUrl);
 				caminhoRelativo = "resources" + separator + "relatorios"
 						+ separator + reportUrl + ".jasper";
@@ -201,13 +201,13 @@ public class RelatorioJasper {
 
 				if (AchouArquivo)
 					System.out
-							.println("Após todas as tentativas achou o arquivo!!!");
+							.println("Apï¿½s todas as tentativas achou o arquivo!!!");
 				else
 					System.out
-							.println("Após todas as tentativas não achou o arquivo");
+							.println("Apï¿½s todas as tentativas nï¿½o achou o arquivo");
 			} else {
 				System.out
-						.println("Após todas as tentativas a URL Real ainda ficou NULL");
+						.println("Apï¿½s todas as tentativas a URL Real ainda ficou NULL");
 			}
 
 			JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(
@@ -233,7 +233,7 @@ public class RelatorioJasper {
 			os.write(pdf);
 		} catch (Exception e) {
 			FacesUtil
-					.addError("Ocorreu um erro ao tentar gerar o PDF. Mensagem Técnica: "
+					.addError("Ocorreu um erro ao tentar gerar o PDF. Mensagem Tï¿½cnica: "
 							+ e.getMessage());
 			e.printStackTrace();
 		} finally {
@@ -245,7 +245,7 @@ public class RelatorioJasper {
 				facesContext.responseComplete();
 			} catch (IOException e) {
 				FacesUtil
-						.addError("Ocorreu um erro ao tentar gerar o PDF. Mensagem Técnica: "
+						.addError("Ocorreu um erro ao tentar gerar o PDF. Mensagem Tï¿½cnica: "
 								+ e.getMessage());
 				e.printStackTrace();
 			}

@@ -37,7 +37,7 @@ public class SolicitacaoGsonServlet extends HttpServlet implements
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	
 
 	/**
 	 * @see HttpServlet#HttpServlet()

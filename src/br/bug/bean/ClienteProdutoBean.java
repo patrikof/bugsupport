@@ -1,6 +1,5 @@
 package br.bug.bean;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +15,9 @@ import br.bug.negocio.GerenciadorProduto;
 
 @Component
 @Scope("session")
-public class ClienteProdutoBean implements Serializable {
+public class ClienteProdutoBean{
 
-	private static final long serialVersionUID = 1L;
+	
 	private Cliente cliente;
 	private Produto produto;
 	@Autowired
@@ -48,11 +47,11 @@ public class ClienteProdutoBean implements Serializable {
 				cliente.setProdutos(produtosCliente);
 				gerenciaCliente.salvar(cliente);
 			} catch (Exception e) {
-				FacesUtil.addError("Ocorreu um erro ao tentar adicionar o produto para o cliente. Mensagem Técnica: "+e.getMessage());
+				FacesUtil.addError("Ocorreu um erro ao tentar adicionar o produto para o cliente. Mensagem Tï¿½cnica: "+e.getMessage());
 				return null;
 			}
 		} else {
-			FacesUtil.addInfo("O produto já pertence ao cliente!");
+			FacesUtil.addInfo("O produto jï¿½ pertence ao cliente!");
 		}
 		return null;
 	}
@@ -66,7 +65,7 @@ public class ClienteProdutoBean implements Serializable {
 			FacesUtil.addInfo("Produto removido com sucesso!");
 			return null;
 		} catch (Exception e) {
-			FacesUtil.addError("Ocorreu um erro ao tentar remover o produto escolhido Mensagem Técnica: "+e.getMessage());
+			FacesUtil.addError("Ocorreu um erro ao tentar remover o produto escolhido Mensagem Tï¿½cnica: "+e.getMessage());
 			return null;
 		}
 	}

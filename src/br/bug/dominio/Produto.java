@@ -1,6 +1,5 @@
 package br.bug.dominio;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
@@ -25,8 +24,8 @@ import javax.persistence.TemporalType;
 import com.google.gson.annotations.Expose;
 
 @Entity
-public class Produto implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Produto{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PRODUTO")
 	@SequenceGenerator(name = "SEQ_PRODUTO", sequenceName = "id_produto_seq", allocationSize = 1)

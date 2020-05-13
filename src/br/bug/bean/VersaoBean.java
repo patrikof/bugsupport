@@ -1,6 +1,5 @@
 package br.bug.bean;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +12,11 @@ import br.bug.negocio.GerenciadorVersao;
 
 @Component
 @Scope("request")
-public class VersaoBean  implements Serializable {
+public class VersaoBean {
 
 	//https://datatables.net/reference/api/row().data()
 	
-	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	private GerenciadorVersao gerenciador;
 	private Versao versao;
@@ -33,7 +32,7 @@ public class VersaoBean  implements Serializable {
 	//e exemplo de fontes baixado JQueryDataTablesSource.zip
 	
 	
-	// Dica de paginação sem dependências : http://marcusmazzo.wordpress.com/category/paginacao/
+	// Dica de paginaï¿½ï¿½o sem dependï¿½ncias : http://marcusmazzo.wordpress.com/category/paginacao/
 	
 	public VersaoBean() {
 		limpaDados();//versao = new Versao();
@@ -50,8 +49,8 @@ public class VersaoBean  implements Serializable {
 	}
 	
 	
-	 /* // Este método deve ser chamado na 
-	   // página de listagem ...
+	 /* // Este mï¿½todo deve ser chamado na 
+	   // pï¿½gina de listagem ...
 	   public String montarLista() {
 	      List<Versao> lista = gerenciador.buscarTodos();
 	      dataModel = new ListDataModel();
@@ -67,7 +66,7 @@ public class VersaoBean  implements Serializable {
 			limpaDados();
 			return "/views/versao/form";
 		} catch (Exception e) {
-			FacesUtil.addError("Ocorreu um erro ao tentar salvar o cadastro. Mensagem Técnica: "+e.getMessage());
+			FacesUtil.addError("Ocorreu um erro ao tentar salvar o cadastro. Mensagem Tï¿½cnica: "+e.getMessage());
 			return null;
 		}
 	}
@@ -82,7 +81,7 @@ public class VersaoBean  implements Serializable {
 			
 			return null;
 		} catch (Exception e) {
-			FacesUtil.addError("Ocorreu um erro ao tentar remover o dado escolhido, possivelmente por estar sendo utilizado em outro cadastro. Mensagem Técnica: "+e.getMessage());
+			FacesUtil.addError("Ocorreu um erro ao tentar remover o dado escolhido, possivelmente por estar sendo utilizado em outro cadastro. Mensagem Tï¿½cnica: "+e.getMessage());
 			return null;
 		}
 	}*/

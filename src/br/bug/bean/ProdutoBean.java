@@ -1,6 +1,5 @@
 package br.bug.bean;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +14,9 @@ import br.bug.negocio.GerenciadorProduto;
 
 @Component
 @Scope("request")
-public class ProdutoBean implements Serializable {
+public class ProdutoBean{
 
-	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	private GerenciadorProduto gerenciador;
 	private Produto produto;
@@ -44,7 +43,7 @@ public class ProdutoBean implements Serializable {
 			limpaDados();
 			return "/views/produto/form";
 		} catch (Exception e) {
-			FacesUtil.addError("Ocorreu um erro ao tentar salvar o cadastro. Mensagem Técnica: "+e.getMessage());
+			FacesUtil.addError("Ocorreu um erro ao tentar salvar o cadastro. Mensagem Tï¿½cnica: "+e.getMessage());
 			return null;
 		}
 	}
@@ -58,7 +57,7 @@ public class ProdutoBean implements Serializable {
 			return null;
 		} catch (Exception e) {
 			FacesUtil.addError("Ocorreu um erro ao tentar remover o dado escolhido, possivelmente por estar"+
-					" sendo utilizado em outro cadastro. Mensagem Técnica: "+e.getMessage());
+					" sendo utilizado em outro cadastro. Mensagem Tï¿½cnica: "+e.getMessage());
 			return null;
 		}
 	}

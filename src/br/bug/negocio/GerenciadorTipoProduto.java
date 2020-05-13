@@ -9,24 +9,29 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.bug.dao.GenericDAO;
 import br.bug.dominio.TipoProduto;
-@Component @Transactional
+
+@Transactional
+@Component
 public class GerenciadorTipoProduto{
+
 	
 	@Autowired
 	private GenericDAO dao;
-	@Secured ({"ROLE_GERENTE", "ROLE_ADMIN"})  
+
+	@Secured({ "ROLE_GERENTE", "ROLE_ADMIN" })
 	public void salvar(TipoProduto a) {
 		dao.salvar(a);
 	}
-	@Secured ({"ROLE_GERENTE", "ROLE_ADMIN"})  
+
+	@Secured({ "ROLE_GERENTE", "ROLE_ADMIN" })
 	public void remover(TipoProduto a) {
 		dao.remover(a);
 	}
-	
+
 	public TipoProduto buscar(int id) {
 		return dao.buscar(id, TipoProduto.class);
 	}
-	
+
 	public List<TipoProduto> buscarTodos() {
 		return dao.buscarTodos(TipoProduto.class);
 	}

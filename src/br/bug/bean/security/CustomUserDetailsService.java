@@ -16,7 +16,7 @@ import br.bug.negocio.GerenciadorUsuario;
 @Component
 public class CustomUserDetailsService implements UserDetailsService,
 		Serializable {
-	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	GerenciadorUsuario gerenciador;
 	Usuario usuario;
@@ -44,24 +44,24 @@ public class CustomUserDetailsService implements UserDetailsService,
 						usuario.setSenha(senhaCripto);
 						
 					} else {
-						FacesUtil.addError("As senhas não são iguais! Digite novamente!");
+						FacesUtil.addError("As senhas nï¿½o sï¿½o iguais! Digite novamente!");
 						senhaDigitada = null;
 						senhaConfirmacao = null;
 						return null;
 					}
 				} else {
-					FacesUtil.addError("Digite a senha de confirmação!");
+					FacesUtil.addError("Digite a senha de confirmaï¿½ï¿½o!");
 					senhaDigitada = getSenhaDigitada();					
 					return null;
 				}
 			}
 
 			gerenciador.salvar(usuario);
-			FacesUtil.addInfo("Dados do usuário "+usuario.getLogin()+" salvos com sucesso!");
+			FacesUtil.addInfo("Dados do usuï¿½rio "+usuario.getLogin()+" salvos com sucesso!");
 			return "/views/principal.jsf";
 		} catch (Exception e) {
 			FacesUtil
-					.addError("Ocorreu um erro ao tentar salvar o Usuário. Mensagem Técnica: "
+					.addError("Ocorreu um erro ao tentar salvar o Usuï¿½rio. Mensagem Tï¿½cnica: "
 							+ e.getMessage());
 			return null;
 		}
@@ -69,9 +69,9 @@ public class CustomUserDetailsService implements UserDetailsService,
 
 	
 	 * public String remover() { try { gerenciador.remover(usuario);
-	 * FacesUtil.addInfo("Usuário removido com sucesso!"); return null; } catch
+	 * FacesUtil.addInfo("Usuï¿½rio removido com sucesso!"); return null; } catch
 	 * (Exception e) { FacesUtil.addError(
-	 * "Ocorreu um erro ao tentar remover o Usuário escolhido, possivelmente por estar sendo utilizado em outro cadastro. Mensagem Técnica: "
+	 * "Ocorreu um erro ao tentar remover o Usuï¿½rio escolhido, possivelmente por estar sendo utilizado em outro cadastro. Mensagem Tï¿½cnica: "
 	 * +e.getMessage()); return null; } } public String alterar() { usuario =
 	 * gerenciador.buscar(usuario.getId()); return "/views/usuario/form"; }
 	 
@@ -90,7 +90,7 @@ public class CustomUserDetailsService implements UserDetailsService,
 		 
 		return FacesUtil.redirect("/views/usuario/form_muda_senha.jsf");
 		
-		 * } else { FacesUtil.addWarning("Alteração não permitida!"); return
+		 * } else { FacesUtil.addWarning("Alteraï¿½ï¿½o nï¿½o permitida!"); return
 		 * null; }
 		 
 	}
@@ -120,7 +120,7 @@ public Usuario getUsuarioLogado()
 		} catch (Exception e) {
 			//System.out.println(e.getMessage()+ " StackTrace:" + e.getStackTrace().toString());
 			e.printStackTrace();
-			throw new UsernameNotFoundException("Usuário não encontrado: "	+ login);
+			throw new UsernameNotFoundException("Usuï¿½rio nï¿½o encontrado: "	+ login);
 			
 		}
 	}

@@ -1,7 +1,5 @@
 package br.bug.dominio;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Versao implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Versao{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_VERSAO")
 	@SequenceGenerator(name = "SEQ_VERSAO", sequenceName = "id_versao_seq", allocationSize = 1)

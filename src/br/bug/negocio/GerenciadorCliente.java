@@ -17,38 +17,41 @@ import br.bug.jsf.FacesUtil;
 import br.bug.relatorio.RelatorioJasper;
 import net.sf.jasperreports.engine.JRException;
 
-@Component  @Transactional
-public class GerenciadorCliente{	
+@Transactional
+@Component
+public class GerenciadorCliente {
+
 	@Autowired
 	private GenericDAO dao;
-	@Secured ({"ROLE_GERENTE", "ROLE_ADMIN"}) 
-	public void salvar(Cliente a) {		
-		if (a.getDataCadastro() == null)	
-		{
+
+	@Secured({ "ROLE_GERENTE", "ROLE_ADMIN" })
+	public void salvar(Cliente a) {
+		if (a.getDataCadastro() == null) {
 			a.setDataCadastro(new Date());
 		}
 		dao.salvar(a);
 	}
-	@Secured ({"ROLE_GERENTE", "ROLE_ADMIN"})  
+
+	@Secured({ "ROLE_GERENTE", "ROLE_ADMIN" })
 	public void remover(Cliente a) {
 		dao.remover(a);
 	}
-	
+
 	public Cliente buscar(int id) {
 		return dao.buscar(id, Cliente.class);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Cliente> buscarTodos() {
-		//return dao.buscarTodos(Cliente.class);
-		
+		// return dao.buscarTodos(Cliente.class);
+
 		String QueryAux = "select c from Cliente c";
 		QueryAux = QueryAux + " order by c.nomeFantasia";
 		ArrayList<Cliente> lista = (ArrayList<Cliente>) dao.getHt().find(QueryAux);
 		return lista;
-		
+
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public ArrayList<Produto> buscarProdutosCliente(int idCliente) {
 		String QueryAux = "select p from Produto p join p.clientes c where c.id =?";
@@ -56,12 +59,12 @@ public class GerenciadorCliente{
 		ArrayList<Produto> lista = (ArrayList<Produto>) dao.getHt().find(QueryAux, idCliente);
 		return lista;
 	}
-	public void gerarPdf(List<Cliente> clientes)  throws JRException, IOException 
-	{
-		if (clientes!=null)			
-		  RelatorioJasper.imprimir(clientes,"RelatorioClientes", null);		  
+
+	public void gerarPdf(List<Cliente> clientes) throws JRException, IOException {
+		if (clientes != null)
+			RelatorioJasper.imprimir(clientes, "RelatorioClientes", null);
 		else
-		  FacesUtil.addInfo("Não há resultado para gerar um PDF.");		
+			FacesUtil.addInfo("Nï¿½o hï¿½ resultado para gerar um PDF.");
 	}
 
 }
