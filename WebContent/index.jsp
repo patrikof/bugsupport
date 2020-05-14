@@ -1,1 +1,1 @@
-<% response.sendRedirect("views/principal.jsf"); %>
+<% response.sendRedirect("view/principal.jsf"); %>

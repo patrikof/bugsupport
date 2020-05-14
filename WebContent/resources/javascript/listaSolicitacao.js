@@ -83,7 +83,7 @@ $(document)
 														/* console.log(data); */
 														return '<a  class="glyphicon glyphicon-list-alt no-print" href = "'
 																+ contextPath
-																+ '/views/solicitacao/detalhes.jsf?id_dt='
+																+ '/view/solicitacao/detalhes.jsf?id_dt='
 																+ data + '" />';
 
 													},
@@ -101,13 +101,13 @@ $(document)
 														// class="glyphicon
 														// glyphicon-user
 														// no-print"
-														// href="/BugSupport/admin/alteraResponsavel.jsf?id_resp='+data+'"
+														// href="/admin/alteraResponsavel.jsf?id_resp='+data+'"
 														// />';
 														// return '<a
 														// class="glyphicon
 														// glyphicon-user
 														// no-print"
-														// href="/BugSupport/admin/alteraResponsavel.jsf"
+														// href="/admin/alteraResponsavel.jsf"
 														// onclick="alterarResponsavel('+data+')"
 														// />';
 
@@ -122,7 +122,7 @@ $(document)
 														// class="glyphicon
 														// glyphicon-edit
 														// no-print"
-														// href="/BugSupport/views/solicitacao/form.jsf?id_edt='+data+'"
+														// href="/view/solicitacao/form.jsf?id_edt='+data+'"
 														// />';
 														return '<a  class="glyphicon glyphicon-edit no-print" href = "'
 																+ contextPath

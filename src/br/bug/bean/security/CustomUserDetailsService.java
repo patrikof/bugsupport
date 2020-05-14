@@ -10,15 +10,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import br.bug.dominio.Usuario;
-import br.bug.negocio.GerenciadorUsuario;
+import br.bug.model.Usuario;
+import br.bug.service.UsuarioService;
 
 @Component
-public class CustomUserDetailsService implements UserDetailsService,
-		Serializable {
-	
+public class CustomUserDetailsService implements UserDetailsService,Serializable {
+	private static final long serialVersionUID = 1L;
 	@Autowired
-	GerenciadorUsuario gerenciador;
+	UsuarioService gerenciador;
 	Usuario usuario;
 	/*String senhaDigitada;
 	String senhaConfirmacao;*/
@@ -58,7 +57,7 @@ public class CustomUserDetailsService implements UserDetailsService,
 
 			gerenciador.salvar(usuario);
 			FacesUtil.addInfo("Dados do usu�rio "+usuario.getLogin()+" salvos com sucesso!");
-			return "/views/principal.jsf";
+			return "/view/principal.jsf";
 		} catch (Exception e) {
 			FacesUtil
 					.addError("Ocorreu um erro ao tentar salvar o Usu�rio. Mensagem T�cnica: "
@@ -73,7 +72,7 @@ public class CustomUserDetailsService implements UserDetailsService,
 	 * (Exception e) { FacesUtil.addError(
 	 * "Ocorreu um erro ao tentar remover o Usu�rio escolhido, possivelmente por estar sendo utilizado em outro cadastro. Mensagem T�cnica: "
 	 * +e.getMessage()); return null; } } public String alterar() { usuario =
-	 * gerenciador.buscar(usuario.getId()); return "/views/usuario/form"; }
+	 * gerenciador.buscar(usuario.getId()); return "/view/usuario/form"; }
 	 
 	public String alterarSenha() {
 		usuario = ((CustomUserDetailsService) ContextLoader
@@ -88,7 +87,7 @@ public class CustomUserDetailsService implements UserDetailsService,
 		 * "customUserDetailsService")).getUsuarioLogado(); if ( u.getId() ==
 		 * usuario.getId() ) {
 		 
-		return FacesUtil.redirect("/views/usuario/form_muda_senha.jsf");
+		return FacesUtil.redirect("/view/usuario/form_muda_senha.jsf");
 		
 		 * } else { FacesUtil.addWarning("Altera��o n�o permitida!"); return
 		 * null; }
@@ -120,7 +119,7 @@ public Usuario getUsuarioLogado()
 		} catch (Exception e) {
 			//System.out.println(e.getMessage()+ " StackTrace:" + e.getStackTrace().toString());
 			e.printStackTrace();
-			throw new UsernameNotFoundException("Usu�rio n�o encontrado: "	+ login);
+			throw new UsernameNotFoundException("Usuário não encontrado: "	+ login);
 			
 		}
 	}
@@ -152,5 +151,4 @@ public Usuario getUsuarioLogado()
 	public void setSenhaConfirmacao(String senhaConfirmacao) {
 		this.senhaConfirmacao = senhaConfirmacao;
 	}*/
-
 }

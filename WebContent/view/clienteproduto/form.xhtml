@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/Menu.xhtml">
+
+	<ui:define name="content">
+	
+		<h:form id="f64" class="form-horizontal" role="form">
+			<h:messages id="message" style="color:blue" />
+			<div class="col-sm-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title text-center" style="font-weight: bold;">Cadastro
+							dos Produtos do Cliente:
+							#{clienteProdutoBean.cliente.nomeFantasia}</h2>
+					</div>
+					<div class="panel-body">
+						<br />
+						<div class="form-group">
+							<label class="col-sm-1 control-label">Produto:</label>
+							<h:selectOneMenu style="width:380px" styleClass="form-control"
+								value="#{clienteProdutoBean.produto.id}" required="true"
+								requiredMessage="Informe/Cadastre um Produto." id="produto"
+								label="Produto">
+								<f:selectItem itemValue=""
+									itemLabel=" -- Selecione um Produto -- " />
+								<f:selectItems value="#{produtoBean.listagem}" var="prod"
+									itemValue="#{prod.id}" itemLabel="#{prod.descricao}" />
+							</h:selectOneMenu>
+							<h:message for="produto" />
+						</div>
+					</div>
+				</div>
+			</div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<h:commandButton value="Adicionar" action="#{clienteProdutoBean.adicionar}"
+				class="btn btn-large btn-primary" />
+			&nbsp;
+			<h:commandButton value="Cancelar" action="/view/principal"
+				immediate="true" class="btn btn-large btn-primary" />
+		</h:form>
+		<br />
+		<h:form>
+			<div class="col-sm-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title text-center" style="font-weight: bold;">Relação
+							dos Produto do Cliente</h2>
+					</div>
+
+					<div class="table-responsive">
+						<h:dataTable styleClass="table display"
+							value="#{clienteProdutoBean.listagem}" var="a">
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Produto" />
+								</f:facet>
+								<h:outputText value="#{a.descricao}" />
+							</h:column>
+							<h:column rendered="#{clienteProdutoBean.contemProdutos}">
+								<f:facet name="header">
+									<h:outputText styleClass="glyphicon glyphicon-remove" />
+								</f:facet>
+								<h:commandLink styleClass="glyphicon glyphicon-remove"
+									action="#{clienteProdutoBean.remover(a.id)}"
+									onclick="if (!confirm('Deseja realmente excluir o produto \'#{a.descricao}\'?')){ return false};">
+								</h:commandLink>
+							</h:column>
+						</h:dataTable>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

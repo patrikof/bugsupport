@@ -3,19 +3,19 @@
 	<persistence-unit name="BugSupport">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<jta-data-source>java:jboss/datasources/Postgres-DS</jta-data-source>
-		<class>br.bug.dominio.Cliente</class>
-		<class>br.bug.dominio.GrupoCliente</class>
-		<class>br.bug.dominio.Papel</class>
-		<class>br.bug.dominio.Prioridade</class>
-		<class>br.bug.dominio.Produto</class>
-		<class>br.bug.dominio.SistemaOperacional</class>
-		<class>br.bug.dominio.Solicitacao</class>
-		<class>br.bug.dominio.Status</class>
-		<class>br.bug.dominio.TipoProduto</class>
-		<class>br.bug.dominio.TipoSolicitacao</class>
-		<class>br.bug.dominio.Usuario</class>
-		<class>br.bug.dominio.Versao</class>
-		<class>br.bug.dominio.UsuariosLembrados</class>
+		<class>br.bug.model.Cliente</class>
+		<class>br.bug.model.GrupoCliente</class>
+		<class>br.bug.model.Papel</class>
+		<class>br.bug.model.Prioridade</class>
+		<class>br.bug.model.Produto</class>
+		<class>br.bug.model.SistemaOperacional</class>
+		<class>br.bug.model.Solicitacao</class>
+		<class>br.bug.model.Status</class>
+		<class>br.bug.model.TipoProduto</class>
+		<class>br.bug.model.TipoSolicitacao</class>
+		<class>br.bug.model.Usuario</class>
+		<class>br.bug.model.Versao</class>
+		<class>br.bug.model.UsuariosLembrados</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
 			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>

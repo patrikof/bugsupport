@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/Menu.xhtml">
+
+	<ui:define name="content">
+		<h:form id="f64" class="form-horizontal" role="form">
+			<h:messages id="message" style="color:blue" />
+			<div class="col-sm-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title text-center" style="font-weight: bold;">Cadastro
+							de Sistemas Operacionais</h2>
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="col-sm-1 control-label">Descrição:</label>
+							<h:inputText class="form-control"
+								value="#{sistemaOperacionalBean.sistemaOperacional.descricao}"
+								required="true" requiredMessage="Informe uma Descrição."
+								id="descricao" style="width:245px" label="Descrição">
+							</h:inputText>
+						</div>
+						<h:message for="descricao" />
+						<h:inputHidden
+							value="#{sistemaOperacionalBean.sistemaOperacional.id}" />
+					</div>
+				</div>
+			</div>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<h:commandButton value="Salvar"
+				action="#{sistemaOperacionalBean.salvar}"
+				class="btn btn-large btn-primary" />
+			&nbsp;
+			<h:commandButton value="Cancelar" action="/view/principal"
+				immediate="true" class="btn btn-large btn-primary" />
+		</h:form>
+	</ui:define>
+</ui:composition>

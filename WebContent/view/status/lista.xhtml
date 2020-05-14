@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/Menu.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<h:messages id="message" style="color:blue" />
+			<div class="col-sm-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title text-center" style="font-weight: bold;">Relação
+							de Status de Solicitação</h2>
+					</div>
+					<div class="table-responsive">
+						<div class="">
+							<h:dataTable styleClass="table display"
+								value="#{statusBean.listagem}" var="a">
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Descrição" />
+									</f:facet>
+									<h:outputText value="#{a.descricao}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText styleClass="glyphicon glyphicon-edit" />
+									</f:facet>
+									<h:commandLink styleClass="glyphicon glyphicon-edit"
+										action="#{statusBean.alterar(a.id)}">
+									</h:commandLink>
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText styleClass="glyphicon glyphicon-remove" />
+									</f:facet>
+									<h:commandLink styleClass="glyphicon glyphicon-remove"
+										action="#{statusBean.remover(a.id)}"
+										onclick="if (!confirm('Deseja realmente excluir o Status \'#{a.descricao}\'?')){ return false};">
+									</h:commandLink>
+								</h:column>
+							</h:dataTable>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
